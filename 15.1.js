@@ -8,7 +8,7 @@
 // of each block of code will be and why.
 // If there are any faulty outputs, please write on how we can fix them.
 
-/******************************************Block 1*/
+/*********************** *******************Block 1*/
 /**   */
 function funcA() {
     console.log(a);
