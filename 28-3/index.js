@@ -12,9 +12,8 @@ function printName() {
 
 // function printHeroes(heroes, printFunc) {
 function printHeroes(heroes, printFunc) {
-    //add your code here
-    this.heroes = heroes;
-    this.printFunc = printFunc;
-
+    printName.call(superHeroes[0])
+    printName.call(superHeroes[1])
 }
-printHeroes.call(superHeroes, printName)
+// console.log(printHeroes.bind(superHeroes, printName))
+printHeroes(superHeroes, printName)
