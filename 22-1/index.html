@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-1</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <div> What is your name?
+            </div>
+            <input id="name" type="text" placeholder="name" />
+        </div>
+        <div> How old are you?<br>
+            <input id="age" type="number" placeholder="age" />
+        </div>
+        <div>Email address<br>
+            <input id="email" type="text" placeholder="email" />
+        </div>
+        <div>
+            <button onclick="form1()">Submit!</button>
+        </div>
+    </div>
+
+    <script>
+        function form1() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var email = document.getElementById("email").value;
+            var message =
+                name + ", are you " + age + " old and your email is " + email + " ?";
+            var isConfirmed = confirm(message);
+            if (isConfirmed) {
+                window.alert("your form sent");
+            }
+        }
+    </script>
+</body>
+
+</html>
