@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23-2</title>
+</head>
+
+<body>
+    <div id="watch">
+        <h2>The Time is:</h2>
+        <div id="stopwatch"></div>
+        <button id="start-watch">start</button>
+        <button id="stop">stop</button>
+    </div>
+    <script>
+        let stopInterval;
+        let startTime;
+        let passedTime = 0;
+
+        document.getElementById("stopwatch").innerText = "00:00:00";
+
+        document.getElementById("start-watch").addEventListener("click", (e) => {
+            startTime = Date.now();
+
+            stopInterval = setInterval(() => {
+                const elapsed = new Date(Date.now() - startTime + passedTime);
+                const sec = ("0" + elapsed.getSeconds());
+                const minutes = ("0" + elapsed.getMinutes());
+                const milisec = (
+                    "0" + parseInt(elapsed.getMilliseconds() / 100)
+                );
+
+                const time = `${minutes}:${sec}:${milisec}`;
+                document.getElementById("stopwatch").innerText = time;
+            });
+        });
+
+        document.getElementById("stop").addEventListener("click", (e) => {
+            clearInterval(stopInterval);
+            passedTime += new Date(Date.now() - startTime).getTime();
+        });
+    </script>
+</body>
+
+</html>
