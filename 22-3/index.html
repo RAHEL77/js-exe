@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-3</title>
+</head>
+<div></div>
+<div>
+    <h1> =========Welcome To Guess My Letter=======</h1>
+    <div id="answer">?</div>
+    <h5 id="msg">Guess a key</h5>
+</div>
+<div>
+    <h2>Keys guessed</h2>
+    <div id="guessed-letter"></div>
+</div>
+<div id="restart" class="hide">
+
+    <br> <br> <br>
+    <h5>------------------------------------Would you like to play again?-------------------------------------------------</h5>
+    <div> -------------------------------------------<button>Yes</button>----------------------------------------------------</div>
+</div>
+
+</div>
+<script>
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzזסבהנמצתץףךלחיעכגדשקראטוןםפ"
+    const randomLetter = alphabet[Math.floor(Math.random())]
+
+    const msg = document.querySelector("#msg");
+    const guessedLetter = document.querySelector("#guessed-letter");
+    const btnconfirm = document.querySelector("button");
+    const restartEl = document.querySelector("#restart");
+    const myAnswer = document.querySelector("#answer");
+
+
+    const guessedKeys = [];
+    const guessedKey = (keyPressed) => {
+        guessedKeys.push(keyPressed);
+        guessedLetter.textContent = guessedKeys;
+    };
+    btnconfirm.addEventListener("click", () => {
+        restartEl.classList.add("hide");
+        restart();
+    });
+
+    const restart = () => {
+        msg.textContent = "Guess a letter";
+        myAnswer.textContent = "?";
+        msg.classList.remove("green");
+        msg.classList.remove("red");
+        guessedKeys.splice(0, guessedKeys.length);
+        guessedLetter.textContent = guessedKeys;
+    };
+
+
+    document.addEventListener("keydown", (e) => {
+        if (restartEl.classList.contains("hide")) {
+            const key = e.key;
+
+            if (guessedKeys.includes(key)) {
+                return (msg.textContent = `${key} has already been guessed!`);
+            }
+            if (randomLetter !== key) {
+                msg.textContent = "Nope, wrong letter";
+                msg.classList.add("red");
+                return guessedKey(key);
+            }
+            if (randomLetter === key) {
+                msg.textContent = "Right letter!";
+                myAnswer.textContent = randomLetter;
+                msg.classList.remove("red");
+
+                restartEl.classList.remove("hide");
+            }
+        }
+    });
+</script>
+</body>
+
+</html>
