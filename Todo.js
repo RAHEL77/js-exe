@@ -44,8 +44,10 @@ const deleteRecord = (id) => {
     console.log("AFTER THE DELETE:", todolist);
 }
 
-read(2);
+//read(2);
 create(4, "walk");
-create(5, "walk2");
-deleteRecord(1);
-update(2, "dream");
+//create(5, "walk2");
+//deleteRecord(1);
+//update(2, "dream");
+
+module.exports = create
