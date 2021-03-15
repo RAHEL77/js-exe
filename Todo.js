@@ -9,7 +9,7 @@ console.log("ALL LIST:", todolist);
 const create = (id, task) => {
     let newtodo = { id: id, task: task, done: false }
     todolist.push(newtodo)
-    console.log("AFTER THE CREATION:", todolist);
+    console.log("AFTER THE CREATION::", todolist);
 }
 
 
